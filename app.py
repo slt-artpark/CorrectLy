@@ -8,13 +8,14 @@ from textblob import TextBlob
 import docx
 from src import checker
 from src.extractdoc import scrape_docx
+from flask_ngrok import run_with_ngrok
 
 UPLOAD_FOLDER = './test'
 ALLOWED_EXTENSIONS = set(['docx'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+run_with_ngrok(app)  
 
 def allowed_file(filename):
     return '.' in filename and \
