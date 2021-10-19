@@ -24,7 +24,7 @@ combos = []
 
 def encode_sentence(english):
 	doc = en_nlp(english)
-	deps_dict = np.load('./research/deps_dict.npy').item()
+	deps_dict = np.load('./research/deps_dict.npy',  allow_pickle=True).item()
 
 	sent_struct = []
 	for token in doc:
@@ -37,7 +37,7 @@ def encode_sentence(english):
 	return sentence_code
 
 def decode_coding(code):
-	inv_deps_dict = np.load('./research/inv_deps_dict.npy').item()
+	inv_deps_dict = np.load('./research/inv_deps_dict.npy',  allow_pickle=True).item()
 	code_list = list(code.replace(' ', ''))
 	decoded_list = []
 	for char in code_list:
@@ -212,8 +212,8 @@ def sentence_correction(payload, sc_dict):
 
 def modify(text):
 
-	correctly = np.load('./research/correctly.npy').item()
-	sentence_codes_dict = np.load('./research/sentence_correction_dict.npy').item()
+	correctly = np.load('./research/correctly.npy',  allow_pickle=True).item()
+	sentence_codes_dict = np.load('./research/sentence_correction_dict.npy',  allow_pickle=True).item()
 
 	vv_errors = 0
 	vvv_errors = 0
